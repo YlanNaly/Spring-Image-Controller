@@ -39,10 +39,10 @@ public class ChangeImage {
                 int r = (rgb >> 16) & 0xFF;
                 int g = (rgb >> 8) & 0xFF;
                 int b = (rgb & 0xFF);
-                double lum = 0.2126 * Math.pow(r / 255.0, 2.2) + 0.7152 * Math.pow(g / 255.0, 2.2) + 0.0722 * Math.pow(b / 255.0, 2.2);
-                int grayLevel = (int) (255.0 * Math.pow(lum, 1.0 / 2.2));
-                int gray = (grayLevel << 16) + (grayLevel << 8) + grayLevel;
-                img.setRGB(x, y, gray);
+                double color = 0.2126 * Math.pow(r / 255.0, 2.2) + 0.7152 * Math.pow(g / 255.0, 2.2) + 0.0722 * Math.pow(b / 255.0, 2.2);
+                int contrast = (int) (255.0 * Math.pow(color , 1.0 / 2.2));
+                int grey = (contrast << 16) + (contrast << 8) + contrast;
+                img.setRGB(x, y, grey);
                 ByteArrayOutputStream byteImage = new ByteArrayOutputStream();
                 ImageIO.write(img, "jpeg", byteImage);
                 bytes = byteImage.toByteArray() ;
